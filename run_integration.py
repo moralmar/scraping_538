@@ -71,5 +71,5 @@ conn.close()
 logging.info('# of articles loaded:       {a}'.format(a=data.shape[0]))
 logging.info('# of articles "integrated": {a}'.format(a=data.shape[0] - num_rejected))
 logging.info('# of articles rejected:     {a}'.format(a=num_rejected))
-
+logging.info('*'*30 + '\nFINISHED\n' + '*'*30)
 # TODO: put here: Visual Aid - to be sure that all articles are scraped
