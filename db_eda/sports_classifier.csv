@@ -1,0 +1,6 @@
+1,Golf,concept('golf')
+2,Tennis,concept('tennis')
+3,Squash,concept('squash')
+4,Cricket,concept('cricket')
+5,Soccer,"or(concept('soccer'),concept('association football'))"
+6,American Football,"or(concept('super bowl'),concept('NFL'),concept('american football'))"
