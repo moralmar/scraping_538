@@ -18,6 +18,7 @@ utils.start_logging(filename_log)
 logging.info('*'*30 + '\nGET Text_Razor JSON - START\n' + '*'*30)
 
 # get data
+# ----------------------------------------------------------------
 conn = utils.create_connection('scraping538.db')
 query = "SELECT * FROM ARTICLES_538 WHERE TEXTRAZOR_JSON_SAVED = 0 LIMIT {a}".format(a=NUMBER_OF_RECORDS)
 articles_all = pd.read_sql(query, con=conn)
@@ -28,6 +29,8 @@ client = textrazor.TextRazor(extractors=['entailments', 'relations', 'dependency
                                          "entities", "topics", "words", "phrases"])
 client.set_classifiers(["textrazor_newscodes"])
 
+# get JSON
+# ----------------------------------------------------------------
 logging.info('Starting Iteration')
 for rec in range(articles_all.shape[0]):
     # text to analyze
@@ -51,5 +54,6 @@ for rec in range(articles_all.shape[0]):
     conn.commit()
 
 # finally:
+# ----------------------------------------------------------------
 conn.close()
 logging.info('*'*30 + '\nFINISHED\n' + '*'*30)
