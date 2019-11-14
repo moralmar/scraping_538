@@ -10,7 +10,7 @@ utils.start_logging(FILENAME_lOG)
 
 logging.info('*'*30 + '\nINTEGRATION START\n' + '*'*30)
 
-# TODO: put here: CLEANING AND WRITING BACK to DB
+
 # INPUTS
 TABLE_NAME = 'ARTICLES_538'
 STAGING_TABLE = 'S_ARTICLES_538'
@@ -72,4 +72,5 @@ logging.info('# of articles loaded:       {a}'.format(a=data.shape[0]))
 logging.info('# of articles "integrated": {a}'.format(a=data.shape[0] - num_rejected))
 logging.info('# of articles rejected:     {a}'.format(a=num_rejected))
 logging.info('*'*30 + '\nFINISHED\n' + '*'*30)
+
 # TODO: put here: Visual Aid - to be sure that all articles are scraped
