@@ -9,7 +9,7 @@ import textrazor
 
 
 TABLE_NAME = 'ARTICLES_538'
-NUMBER_OF_RECORDS = 479
+NUMBER_OF_RECORDS = 499
 
 now_str = time.strftime('%Y%m%d_%H%M%S')
 filename_log = 'log/' + now_str + 'get_textrazor_json.txt'
