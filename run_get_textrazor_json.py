@@ -1,7 +1,6 @@
 import config
 import utils
 import time
-import re
 import json
 import logging
 import pandas as pd
