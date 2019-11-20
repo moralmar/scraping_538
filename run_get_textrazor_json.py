@@ -36,7 +36,7 @@ for rec in range(articles_all.shape[0]):
     analyze_this = articles_all['article_text_without_children'][rec]
     analyze_this_PK = articles_all['PK_ID'][rec]
     analyze_this_PK_clean = articles_all['PK_ID_CLEAN'][rec]
-    logging.info('>> {a}: PK of text to analyze: {b}'.format(a=rec, b=analyze_this_PK))
+    logging.info('>> {a}: PK of text to analyze: {b}'.format(a=rec+1, b=analyze_this_PK))
 
     # get JSON
     response = client.analyze(analyze_this)
