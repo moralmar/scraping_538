@@ -15,8 +15,13 @@ more work to be done:
 - interactive?
 - how can I automate topic colouring?
 
-#### visualize article clustering
+## visualize article clustering
+ORANGE = articles
+LIGHT BLUE = topic
+Only a subset of 100 articles are used for this visualization.
+Kind of visualization: topics and articles connected with "springs"
+
 ![](db_eda/0199_dbd.png.png)
 
-#### animation of article clustering
+## animation of article clustering
 ![](db_eda/seq_movie.gif)
