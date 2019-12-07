@@ -16,8 +16,8 @@ more work to be done:
 - how can I automate topic colouring?
 
 ## visualize article clustering
-ORANGE = articles
-LIGHT BLUE = topic
+- ORANGE = articles
+- LIGHT BLUE = topic
 Only a subset of 100 articles are used for this visualization.
 Kind of visualization: topics and articles connected with "springs"
 
