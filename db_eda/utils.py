@@ -4,6 +4,7 @@ import json
 from pandas.io.json import json_normalize
 import pandas as pd
 import networkx as nx
+import imageio
 import matplotlib.pyplot as plt
 
 
@@ -21,6 +22,24 @@ def create_connection(db_file):
  
     return conn
 
+
+def create_folder(foldername):
+    """define the name of the directory to be created"""
+    try:  
+        os.mkdir(foldername)
+    except OSError:  
+        print ("Creation of the directory %s failed" % foldername)
+    else:  
+        print ("Successfully created the directory %s " % foldername)
+
+        
+def create_gif(folder_name_pngs, folder_name_gif, filenames_pngs, duration):
+    """"""
+    images = []
+    for filename in filenames_pngs:
+        images.append(imageio.imread(folder_name_pngs + '/' + filename))
+    imageio.mimsave(folder_name_gif + '/seq_movie.gif', images, duration = duration)
+    
 
 def get_topic_df(path, modus, subset_records=100):
     """"""
@@ -41,7 +60,7 @@ def get_topic_df(path, modus, subset_records=100):
     return data
 
 
-def create_spring_layout(data, club_col, person_col, iteration=50):
+def create_spring_layout(data, club_col, person_col, iteration=50, seed=None, modus='SHOW', folder_name_pngs='', fig_save_name=''):
     """"""
     # Prep
     # -------
@@ -55,9 +74,10 @@ def create_spring_layout(data, club_col, person_col, iteration=50):
     # --------
     plt.figure(figsize=(12, 12))
     # 1. Create the graph
-    g = nx.from_pandas_dataframe(data, source=person_col, target=club_col)
+    # g = nx.from_pandas_dataframe(data, source=person_col, target=club_col)  << old
+    g = nx.from_pandas_edgelist(data, source=person_col, target=club_col)
     # 2. Create a layout for our nodes 
-    layout = nx.spring_layout(g, iterations=iteration)
+    layout = nx.spring_layout(g, iterations=iteration, seed=seed)
     # 3. Draw the parts we want
     # Edges thin and grey
     # People small and grey
@@ -95,4 +115,7 @@ def create_spring_layout(data, club_col, person_col, iteration=50):
     plt.axis('off')
     plt.title("Topic Clustering")
     # 5. Tell matplotlib to show it
-    plt.show()
+    if modus=='SHOW':
+        plt.show()
+    elif modus=='SAVEPLOT':
+        plt.savefig(folder_name_pngs + '/' + str(fig_save_name) + '.png')
