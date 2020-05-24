@@ -23,7 +23,7 @@ class BasicSpider(scrapy.Spider):
     start_urls = (
         'http://fivethirtyeight.com',
                   )
-    custom_settings = {"CLOSESPIDER_ITEMCOUNT": 50}
+    custom_settings = {"CLOSESPIDER_ITEMCOUNT": 60}
 
     def parse(self, response):
         next_selector_extract = response.css('.link-sectionmore::attr(href)').extract()
